@@ -1,0 +1,9 @@
+services:
+  loadtest:
+    image: loadimpact/k6
+    environment:
+      K6_PROMETHEUS_REMOTE_URL: http://localhost:9090/api/v1/write
+    volumes:
+      - ./scripts:/scripts
+      - ./result:/jsonoutput
+    command: run  /scripts/script.js
